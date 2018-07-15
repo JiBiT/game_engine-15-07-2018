@@ -11,6 +11,7 @@ public class Player_Health : MonoBehaviour
 	private static GameObject manager;
 	private PlayerManager playerManager;
 
+	private Color tempcolor;
 	//GUI
 	public Image healthbar;
 	public float lifepoints;
@@ -22,8 +23,8 @@ public class Player_Health : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		playerName.text = this.gameObject.GetComponent<PlayerMovement>().playerID.ToString() + "0";
-
+		playerName.text = "P" + this.gameObject.GetComponent<PlayerMovement> ().playerID.ToString ();
+		tempcolor = playerName.color;
 	}
 	
 	// Update is called once per frame
@@ -42,12 +43,24 @@ public class Player_Health : MonoBehaviour
 		}
 		if (healthPoints <= 0) {
 			healthbar.fillAmount = 0f;
-			lifepointsText.text = "Destroyed";
+			lifepointsText.text = "zerstört";
 			PlayerDeath ();
 		}
 	}
 
-	void PlayerDeath(){
+	public void SetPlayer (bool var)
+	{
+		print ("set color aufgerufen mit tempcolor: " + tempcolor + " und playercolor: " + playerName.color);
+
+		if (var) {
+			playerName.color = new Color32(009, 239, 157, 255);
+		} else {
+			playerName.color = new Color32(196, 155, 064, 255);
+		}
+	}
+
+	void PlayerDeath ()
+	{
 		print ("player died" + this.gameObject);
 		this.gameObject.GetComponent<PlayerMovement> ().is_dead = true;
 		Destroy (this.gameObject.GetComponent<PolygonCollider2D> ());
@@ -65,7 +78,8 @@ public class Player_Health : MonoBehaviour
 
 	}
 
-	IEnumerator Death(){
+	IEnumerator Death ()
+	{
 		yield return new WaitForSeconds (2);
 		Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
 

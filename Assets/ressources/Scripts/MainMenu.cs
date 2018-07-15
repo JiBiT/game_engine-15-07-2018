@@ -15,9 +15,9 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene("4 Players");
     }
 
-    public void SixPlayers()
+    public void TwoPlayers()
     {
-        SceneManager.LoadScene("6 Players");
+        SceneManager.LoadScene("2 Player");
     }
 
     public void QuitGame()

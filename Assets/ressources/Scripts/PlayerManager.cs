@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
 	public int activePlayers;
 	public GameObject[] tanks;
 	public PlayerMovement playerScript;
+	public Player_Health playerHealth;
 	public Weapon weaponScript;
 	private static GameObject manager;
 	public ButtonManager buttonManager;
@@ -61,9 +62,11 @@ public class PlayerManager : MonoBehaviour
 
 		foreach (GameObject tank in tanks) {
 			playerScript = tank.GetComponent<PlayerMovement> ();
+			playerHealth = tank.GetComponent<Player_Health> ();
 
 			if (playerScript.playerID == currentPlayer && playerScript.is_dead == false) {
 				playerScript.is_movable = true;
+				playerHealth.SetPlayer (true);
 				weaponScript = playerScript.GetComponentInChildren<Weapon> ();
 				manager = GameObject.FindGameObjectWithTag ("Manager");
 				buttonManager = manager.GetComponent<ButtonManager> ();
@@ -71,6 +74,7 @@ public class PlayerManager : MonoBehaviour
 				Debug.Log ("Tank mit der ID: " + playerScript.playerID + " wurde aktiviert!");
 			} else if (playerScript.playerID != currentPlayer) {
 				playerScript.is_movable = false;
+				playerHealth.SetPlayer (false);
 			} else if (playerScript.is_dead) {
 				print ("player was dead");
 				NextPlayerMove ();

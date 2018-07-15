@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/First try.unity
     guid: 43c78f32a9c7f914b92b4ebc0fb64b82
   - enabled: 1
-    path: Assets/6 Players.unity
-    guid: bc57040dc91fd1d4b8c5bb4e2e30f4b1
-  - enabled: 1
     path: Assets/4 Players.unity
     guid: 213c54342b8e0d048848392e73cff20e
+  - enabled: 1
+    path: Assets/2 Player.unity
+    guid: 9cba480462781304da356787accb9e3e
