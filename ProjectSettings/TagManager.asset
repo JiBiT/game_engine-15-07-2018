@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Tank
+  - BG
+  - Bullet
+  - firePos
+  - HITABLE
+  - Ground
+  - Manager
+  - DefaultBullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3438001537
+    locked: 0
+  - name: Ground
+    uniqueID: 1039299685
+    locked: 0
+  - name: Player
+    uniqueID: 3972787547
+    locked: 0
+  - name: BulletLayer
+    uniqueID: 2168939945
+    locked: 0
+  - name: UI
+    uniqueID: 2083308453
+    locked: 0
