@@ -324,6 +324,7 @@ MonoBehaviour:
   lifepoints: 0
   lifepointsText: {fileID: 0}
   playerName: {fileID: 0}
+  playerDeadText: {fileID: 0}
 --- !u!114 &114971255434569654
 MonoBehaviour:
   m_ObjectHideFlags: 1

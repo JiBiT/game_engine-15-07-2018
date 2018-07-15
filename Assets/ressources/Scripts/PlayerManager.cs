@@ -20,6 +20,8 @@ public class PlayerManager : MonoBehaviour
 	[SerializeField]
 	public Image healthbar;
 
+    public Text nextPlayerTurnText;
+
 	public enum PerformAction
 	{
 		
@@ -69,20 +71,29 @@ public class PlayerManager : MonoBehaviour
 				buttonManager = manager.GetComponent<ButtonManager> ();
 				buttonManager.SetActiveButton (weaponScript.bulletPrefab);
 				Debug.Log ("Tank mit der ID: " + playerScript.playerID + " wurde aktiviert!");
+
 			} else if (playerScript.playerID != currentPlayer) {
 				playerScript.is_movable = false;
-			} else if (playerScript.is_dead) {
+
+            } else if (playerScript.is_dead) {
 				print ("player was dead");
 				NextPlayerMove ();
 			}
 		}
 	}
+    IEnumerator NextPlayerMoveTextWait()
+    {
+        yield return new WaitForSeconds(1);
+        nextPlayerTurnText.enabled = false;
+    }
 
-	public void NextPlayerMove ()
+    public void NextPlayerMove ()
 	{
-		if (currentPlayer < activePlayers) {
+        nextPlayerTurnText.enabled = true;
+        StartCoroutine(NextPlayerMoveTextWait());
+        if (currentPlayer < activePlayers) {
 			currentPlayer++;
-		} else {
+        } else {
 			currentPlayer = 1;
 		}
 		SetActivePlayer ();
