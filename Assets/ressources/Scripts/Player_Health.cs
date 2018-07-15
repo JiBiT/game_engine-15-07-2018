@@ -16,6 +16,7 @@ public class Player_Health : MonoBehaviour
 	public float lifepoints;
 	public Text lifepointsText;
 	public Text playerName;
+    public Text playerDeadText;
 
 	private float fillAmount;
 
@@ -43,7 +44,8 @@ public class Player_Health : MonoBehaviour
 		if (healthPoints <= 0) {
 			healthbar.fillAmount = 0f;
 			lifepointsText.text = "Destroyed";
-			PlayerDeath ();
+            StartCoroutine(Death());
+            PlayerDeath ();
 		}
 	}
 
@@ -56,18 +58,17 @@ public class Player_Health : MonoBehaviour
 		playerManager = manager.GetComponent<PlayerManager> ();
 //		playerManager.PlayerDied (); 
 
-		StartCoroutine (Death ());
-	
+
+        
+
+    }
 
 
-
-
-
-	}
-
-	IEnumerator Death(){
-		yield return new WaitForSeconds (2);
-		Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
+    IEnumerator Death(){
+        playerDeadText.enabled = true;
+        yield return new WaitForSeconds (2);
+        playerDeadText.enabled = false;
+        Destroy (this.gameObject.GetComponent<Rigidbody2D> ());
 
 	}
 

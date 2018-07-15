@@ -8,10 +8,10 @@ public class ShotgunBehaviour : BulletController
 	public GameObject[] gos;
 	public bool isCreated = false;
 	GameObject clone;
+    private static GameObject manager;
 
-
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		if (isCreated == false) {
 			StartCoroutine (EndRound ());
@@ -19,8 +19,10 @@ public class ShotgunBehaviour : BulletController
 
 
 		}
-
-	}
+        manager = GameObject.FindGameObjectWithTag("Manager");
+        audioManager = manager.GetComponent<AudioManager>();
+        audioManager.PlayTankShot();
+    }
 
 
 	IEnumerator EndRound(){

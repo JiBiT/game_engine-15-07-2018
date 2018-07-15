@@ -4,33 +4,53 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
 
 
-	public AudioSource sourceAudioTankShot;
-	public AudioClip audioTankShot;
+    public AudioSource sourceAudioTankShot;
+    public AudioClip audioTankShot;
 
-//	public AudioSource sourceAudioTankMove;
-//	public AudioClip audioTankMove;
+    public AudioSource sourceAudioExplosion;
+    public AudioClip audioTankExplosion;
 
-	// Use this for initialization
-	void Start () {
-		sourceAudioTankShot.clip = audioTankShot;
+    public AudioSource sourceBackgroundMusic;
+    public AudioClip audioBackgroundMusic;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    //	public AudioSource sourceAudioTankMove;
+    //	public AudioClip audioTankMove;
 
-	public void PlayTankShot(){
-		sourceAudioTankShot.mute = false;
-		sourceAudioTankShot.Play();
-	}
+    // Use this for initialization
+    void Start()
+    {
+        sourceAudioTankShot.clip = audioTankShot;
 
-	public void PlayTankMove(){
-//		sourceAudioTankMove.mute = false;
-//		sourceAudioTankMove.Play();
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void PlayTankShot()
+    {
+        sourceAudioTankShot.mute = false;
+        sourceAudioTankShot.Play();
+    }
+
+    public void PlayTankMove()
+    {
+        //		sourceAudioTankMove.mute = false;
+        //		sourceAudioTankMove.Play();
+    }
+    public void PlayBackgroundMusic()
+    {
+        sourceBackgroundMusic.Play();
+    }
+    public void PlayAudioExlosion()
+    {
+        sourceAudioExplosion.mute = false;
+        sourceAudioExplosion.Play();
+    }
 }
