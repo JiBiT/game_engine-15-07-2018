@@ -7,13 +7,13 @@ public class BouncegranateBehaviour : BulletController
 	private float bounce_counter = 0;
 
 
-	// Use this for initialization
+    // Use this for initialization
 
 
+    private static GameObject manager;
 
 
-
-	public override void OnCollisionEnter2D (Collision2D coll)
+    public override void OnCollisionEnter2D (Collision2D coll)
 	{
 //		base.OnCollisionEnter2D (coll);
 //		if (overriden) {
@@ -27,7 +27,10 @@ public class BouncegranateBehaviour : BulletController
 			if (bounce_counter >= 3) {
 				groundController.DestroyGround (destructionCircle);
 				Explode();
-			}
+                manager = GameObject.FindGameObjectWithTag("Manager");
+                audioManager = manager.GetComponent<AudioManager>();
+                audioManager.PlayTankShot();
+            }
 
 
 		} else if (coll.collider.tag == "Tank" || coll.collider.tag == "Hitable") {

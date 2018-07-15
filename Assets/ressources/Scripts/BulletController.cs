@@ -58,26 +58,41 @@ public class BulletController : MonoBehaviour
 		audioManager.PlayTankShot ();
 	}
 
-	public virtual void OnCollisionEnter2D (Collision2D coll)
+    void MakeSoundExplosion()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager");
+        audioManager = manager.GetComponent<AudioManager>();
+        audioManager.PlayAudioExlosion();
+    }
+    void BackgrondMusic()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager");
+        audioManager = manager.GetComponent<AudioManager>();
+        audioManager.PlayBackgroundMusic();
+    }
+
+    public virtual void OnCollisionEnter2D (Collision2D coll)
 	{
 
 		if (coll.collider.tag == "Ground") {
 
 			groundController.DestroyGround (destructionCircle);
 			Explode ();
+            MakeSoundExplosion();
 //			Destroy (this.gameObject);
 //			Instantiate (boom);
 //			boom.Play ();
 
 
-		} else if (coll.collider.tag == "Tank" || coll.collider.tag == "Hitable") {
+        } else if (coll.collider.tag == "Tank" || coll.collider.tag == "Hitable") {
 //			Destroy (gameObject);
 			Explode ();
+            MakeSoundExplosion();
 //			Instantiate (boom);
 //			boom.Play ();
-                
-			//health.TakeDamage(20);
-			if (coll.gameObject.GetComponent<Player_Health> () != null) {
+
+            //health.TakeDamage(20);
+            if (coll.gameObject.GetComponent<Player_Health> () != null) {
 				//					print ("folgender Tank wurde getroffen: " + coll.gameObject);
 				p_health = coll.gameObject.GetComponent<Player_Health> ();
 				p_health.SetHealth (10f);
